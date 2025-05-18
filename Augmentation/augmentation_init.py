@@ -1,4 +1,7 @@
-import git.Augmentation.utils.augmentation as aug
+from git.Augmentation.utils.augmentation import hsv_augment
+from git.Augmentation.utils.augmentation import affine_augment
+from git.Augmentation.utils.augmentation import cutout
+
 import os
 import glob
 from pathlib import Path
@@ -28,9 +31,9 @@ for cam_idx in range(5):
         print(f"처리 중: {img_path}")
         image = cv2.imread(img_path)
 
-        hsv_img = aug.hsv_augment(image)
-        aff_img, aff_labels = aug.affine_augment(image, label_path)
-        cutout_img = aug.cutout(image)
+        hsv_img = hsv_augment(image)
+        aff_img, aff_labels = affine_augment(image, label_path)
+        cutout_img = cutout(image)
 
         cv2.imwrite(os.path.join(output_dir, "img", f"hsv_{stem}.png"), hsv_img)
         cv2.imwrite(os.path.join(output_dir, "img", f"aff_{stem}.png"), aff_img)
