@@ -5,10 +5,10 @@ from pathlib import Path
 # 경로 설정
 
 
-output_img_dir = "/home/aistore02/git/Augmented/cam0/img"
-output_lbl_dir = "/home/aistore02/git/Augmented/cam0/labels"
-img_path = os.path.join(output_img_dir, "composite_0009.png")
-label_path = os.path.join(output_lbl_dir, "composite_0009.txt")  # YOLO txt 파일 이름 맞춰서 수정
+output_img_dir = "/home/aistore02/Datasets/Augmented_data/img"
+output_lbl_dir = "/home/aistore02/Datasets/Augmented_data/labels"
+img_path = os.path.join(output_img_dir, "aff_composite_0923.png")
+label_path = os.path.join(output_lbl_dir, "aff_composite_0923.txt")  # YOLO txt 파일 이름 맞춰서 수정
 
 
 # output_img_dir = "/home/aistore02/Datasets/Augmented/cam0/img"
