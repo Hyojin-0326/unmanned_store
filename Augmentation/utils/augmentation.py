@@ -25,10 +25,16 @@ def affine_augment(image,label_path, max_translate = 0.1, max_rotate=10, max_sca
 
     voc_bboxes = []
     class_ids = []
-    for label in labels:
-        bbox, cls_id = yolo_to_voc(label)
-        voc_bboxes.append(bbox)
-        class_ids.append(cls_id)
+
+    with open(label_path, 'r') as f:
+        for line in f:
+            comps = line.strip().split()
+            if len(comps) != 5:
+                continue
+            bbox = [float(x) for x in comps]
+            voc_bbox, cls = yolo_to_voc(bbox)
+            voc_bboxes.append(voc_bbox)
+            class_ids.append(cls)
 
     # Affine transform 정의
     transform = A.Compose([
