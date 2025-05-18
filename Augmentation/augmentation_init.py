@@ -1,7 +1,4 @@
-from git.Augmentation.utils.augmentation import hsv_augment
-from git.Augmentation.utils.augmentation import affine_augment
-from git.Augmentation.utils.augmentation import cutout
-
+from utils.augmentation import hsv_augment, affine_augment, cutout
 import os
 import glob
 from pathlib import Path
@@ -35,7 +32,7 @@ for cam_idx in range(5):
         aff_img, aff_labels = affine_augment(image, label_path)
         cutout_img = cutout(image)
 
-        cv2.imwrite(os.path.join(output_dir, "img", f"hsv_{stem}.png"), hsv_img)
+        #cv2.imwrite(os.path.join(output_dir, "img", f"hsv_{stem}.png"), hsv_img)
         cv2.imwrite(os.path.join(output_dir, "img", f"aff_{stem}.png"), aff_img)
         cv2.imwrite(os.path.join(output_dir, "img", f"cutout_{stem}.png"), cutout_img)
 
@@ -44,9 +41,9 @@ for cam_idx in range(5):
                 f.write(" ".join(f"{v:.6f}" for v in label) + "\n")
                 
         # HSV 라벨 복사
-        with open(label_path, 'r') as f_in, \
-            open(os.path.join(output_dir, "labels", f"hsv_{stem}.txt"), "w") as f_out:
-            f_out.write(f_in.read())
+        # with open(label_path, 'r') as f_in, \
+        #     open(os.path.join(output_dir, "labels", f"hsv_{stem}.txt"), "w") as f_out:
+        #     f_out.write(f_in.read())
 
         # Cutout 라벨 복사
         with open(label_path, 'r') as f_in, \
