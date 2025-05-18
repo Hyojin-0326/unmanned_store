@@ -38,7 +38,10 @@ for cam_idx in range(5):
 
         with open(os.path.join(output_dir, "labels", f"aff_{stem}.txt"), "w") as f:
             for label in aff_labels:
-                f.write(" ".join(f"{v:.6f}" for v in label) + "\n")
+                cls_id = int(label[0])
+                coords = label[1:]
+                f.write(f"{cls_id} " + " ".join(f"{v:.6f}" for v in coords) + "\n")
+
                 
         # HSV 라벨 복사
         # with open(label_path, 'r') as f_in, \
